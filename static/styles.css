@@ -1,0 +1,39 @@
+#category {
+  padding-left: 300px;
+  padding-top: 50px;
+}
+
+#latest {
+  padding-top: 50px;
+}
+
+#navigation {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+#login {
+  height: 55px;
+  width: 140px;
+}
+
+#topbar {
+  padding-top: 20px;
+}
+
+.centered {
+  width: 100%;
+  max-width: 630px;
+  padding: 15px;
+  margin: 20px auto;
+  text-align: center;
+  border: solid 3px lightgrey;
+}
+
+.centered2 {
+  width: 100%;
+  max-width: 630px;
+  padding: 35px;
+  margin: 20px auto;
+  border: solid 3px lightgrey;
+}

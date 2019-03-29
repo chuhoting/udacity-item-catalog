@@ -1,0 +1,48 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://localhost:5000/static/styles.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+  <script>
+    function start() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '693858561864-5g7nvicp5cqn7u5bhed4gmlqvi0jt8s3.apps.googleusercontent.com'
+        });
+      });
+    }
+  </script>
+</head>
+
+<nav class="navbar navbar-dark bg-dark" id=navigation>
+  <a class="navbar-brand" style="color:white; font-size:56px">Item Catalog</a>
+  <form action="/gdisconnect" class="form-inline" id=topbar>
+    <input type="submit" value="Log Out" type="button" class="btn btn-secondary my-2 my-sm-0" id=login>
+  </form>
+</nav>
+<body>
+<div class="centered2">
+<h1>Edit Item: {{toedit.name}} </br>Created By: {{creator.email}}</h1>
+<form action="/catalog/{{toedit.name}}/edit" method= "post">
+  Title</br>
+  <input type="text" name="name" value="{{toedit.name}}" maxlength="250" style="width:100%"></br></br>
+  Description</br>
+  <input type="description" name="description" value="{{toedit.description}}" maxlength="250" style="width:100%"> </br></br>
+  Category: </br>
+  <select name="category" style="width:60%">
+    {% for c in categories %}
+    <option value="{{c.id}}" {% if c.name == categoriesitem.name %} selected {% endif %}> {{c.name}} </option> </br></br>
+    {% endfor %}
+
+  </select></br></br>
+  <input type="submit" value="Submit" class="btn btn-secondary my-2 my-sm-0">
+</form>
+  <p><a href="/catalog">Return to main catalog page</a></p>
+</div>
+</body>
+
+</html>
